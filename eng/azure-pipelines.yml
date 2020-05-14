@@ -18,5 +18,5 @@ steps:
     displayName: truffle compile 
 
   - script:
-      npx run test
+      npm run test
     displayName : truffle test
