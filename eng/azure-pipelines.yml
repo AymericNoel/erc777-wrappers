@@ -1,22 +1,28 @@
 trigger:
   - master
 
-variables:
-  contractName: 'WrappedXRP'
 
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-  - task: Npm@1
-    inputs:
-      command: 'install'
-    displayName: npm install
+stages:
+  -stage: A
+    steps:
+      - script: 
+        npm run pre-test
+      displayName: running ganache
+  
+  -stage : B
+    steps:
+      - task: Npm@1
+        inputs:
+          command: 'install'
+        displayName: npm install
 
-  - script: |
-      npx truffle compile 
-    displayName: truffle compile 
+      - script: |
+          npx truffle compile 
+        displayName: truffle compile 
 
-  - script:
-      npm run test
-    displayName : truffle test
+      - script:
+          npx truffle test
+        displayName : truffle test
