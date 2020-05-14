@@ -5,14 +5,15 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-stages:
-  -stage: A
+jobs:
+  -job: A
     steps:
       - script: 
         npm run pre-test
       displayName: running ganache
   
-  -stage : B
+  -job : B
+    dependsOn: A
     steps:
       - task: Npm@1
         inputs:
