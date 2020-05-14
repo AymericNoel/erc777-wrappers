@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pre-test": " ganache-cli --networkId 5777",
+    "test": "concurrently \"npm run pre-test\" \"truffle test\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@openzeppelin/contracts": "^2.4.0",
     "@openzeppelin/test-helpers": "^0.5.4",
     "dotenv": "^8.2.0",
+    "ganache-cli": "^6.9.1",
     "truffle-assert": "^0.9.1",
     "truffle-hdwallet-provider": "^1.0.17"
   }
