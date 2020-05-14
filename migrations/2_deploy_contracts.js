@@ -1,4 +1,5 @@
 const WrappedXRP = artifacts.require("WrappedXRP");
+const WrappedADA = artifacts.require("WrappedADA");
 
 require('@openzeppelin/test-helpers/configure')({ provider: web3.currentProvider, environment: 'truffle' });
 
@@ -11,7 +12,9 @@ module.exports = async function(deployer, network, accounts) {
     await singletons.ERC1820Registry(accounts[0]);
   }
 
-  await deployer.deploy(WrappedXRP)
+  await deployer.deploy(WrappedXRP);
+  await deployer.deploy(WrappedADA);
   const token = await WrappedXRP.deployed();
-  console.log("deployed token", token);
+  const token2 = await WrappedADA.deployed();
+  console.log("deployed token : ", token, " ; ", token2);
 };
