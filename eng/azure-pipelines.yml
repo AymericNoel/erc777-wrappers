@@ -17,6 +17,6 @@ steps:
  
 
   - script: |
-      ganache-cli --host 127.0.0.1 --port 8545 --networkId 5777 > /dev/null &
+      npm run pipeline
       npx truffle test --network development 
     displayName: truffle test
