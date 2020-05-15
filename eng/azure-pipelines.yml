@@ -18,10 +18,5 @@ steps:
 
   - script: |
       npx truffle compile 
-    displayName: truffle compile 
+    displayName: truffle compile  
 
- 
-
-  - script: |
-        npx truffle test --network development 
-      displayName: truffle test
